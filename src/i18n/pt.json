@@ -1,0 +1,32 @@
+{
+    "SEO_TITLE_1": "Edson Nuñez",
+    "SEO_TITLE_2": "Site oficial",
+    "SEO_DESCRIPTION":"Edson Nunez é um artista cristão de renome no mercado gospel brasileiro. Reconhecido como o primeiro artista cristão hispano-americano a assinar contrato com uma gravadora brasileira (Gravadora Novo Tempo), lançou músicas com colaborações internacionais: Daniel ludtke, Laura Morena, Michely Manuely, Ministerio Faces, Kemuel, Vagner Dida, Patricia Rumania entre outros.",
+    "HEADER_MUSIC": "MÚSICA",
+	"HEADER_VIDEOS": "VÍDEOS",
+	"HEADER_ABOUT_ME": "SOBRE MIM",
+    "LAST_RELEASE": "ÚLTIMO LANÇAMENTO",
+    "LAST_RELEASE_DESCRIPTION": "Essa música foi gravada por Edson Nuñez. Com muito amor para todos vocês.",
+    "MUSIC_TITLE": "MÚSICA",
+    "MUSIC_DESCRIPTION": "Descubra o conteúdo musical de Edson Nuñez",
+    "MUSIC_ITEM": "Descobrir",
+    "VIDEOS_TITLE": "VÍDEOS",
+    "VIDEOS_DESCRIPTION": "Descubra os melhores videoclipes de Edson Nuñez",
+    "ABOUT_ME_TITLE": "SOBRE MIM",
+    "BIOGRAPHY_TITLE": "BIOGRAFIA",
+    "BIOGRAPHY_DESCRIPTION": "Descubra o conteúdo de Edson Nuñez",
+    "BENTO_TITLE": "CONQUISTAS IMPORTANTES",
+    "BENTO_DESCRIPTION": "Essas são algumas das conquistas recebidas por Edson Nuñez.",
+    "BENTO_TITLE_1": "LIMA 1",
+    "BENTO_CONTENT_1": "Vencedor de Lima 1.",
+    "BENTO_TITLE_2": "Lima 2",
+    "BENTO_CONTENT_2": "Vencedor de Lima 2.",
+    "BENTO_TITLE_3": "LIMA 3",
+    "BENTO_CONTENT_3": "Vencedor de Lima 3.",
+    "BENTO_TITLE_4": "LIMA 4",
+    "BENTO_CONTENT_4": "Vencedor de Lima 4.",
+    "ERROR_404": {
+		"TITLE": "Página não encontrada",
+		"BACK_HOMEPAGE_BTN": "Voltar à página inicial"
+	}
+}
