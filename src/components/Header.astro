@@ -1,0 +1,76 @@
+---
+import Logo from "./Logo.astro";
+import LanguageSelector from "./LanguageSelector.astro";
+import HeaderLink from "./HeaderLink.astro";
+
+import MenuIcon from "./icons/Menu.astro";
+import CloseIcon from "./icons/Close.astro";
+import FacebookIcon from "./icons/Facebook.astro";
+import TwitterIcon from "./icons/Twiter.astro";
+import TiktokIcon from "./icons/Tiktok.astro";
+import InstagramIcon from "./icons/Instagram.astro";
+
+import { getI18N } from "../i18n/index";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "../i18n/utils";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<header id="header-nav" class="fixed top-0 w-full px-6 py-4 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between gap-16">
+    <HeaderLink
+      checkActive={false}
+      href={translatePath("/")}
+      class="relative z-10"
+      aria-label={i18n.SEO_TITLE_1}
+    >
+      <Logo
+        class="absolute w-10 m-auto blur-sm opacity-0 transition-opacity duration-300 hover:opacity-100"
+      />
+      <Logo class="w-10" />
+    </HeaderLink>
+    <nav
+      id="header-menu"
+      class="fixed w-full h-dvh inset-0 bg-[#151a36]/90 md:text-lg lg:text-xl flex flex-col items-center justify-center md:items-end md:justify-end gap-4 lg:gap-8 -translate-y-full transition-transform duration-300 target:translate-y-0 md:static md:h-[initial] md:bg-[initial] md:flex-row md:translate-y-[initial]"
+    >
+      <HeaderLink class="text__glowing" href={translatePath("/#music")}>
+        {t("nav.music")}
+      </HeaderLink>
+      <HeaderLink class="text__glowing" href={translatePath("/#video")}>
+        {t("nav.video")}
+      </HeaderLink>
+      <HeaderLink class="text__glowing" href={translatePath("/#bio")}>
+        {t("nav.bio")}
+      </HeaderLink>
+      <LanguageSelector />
+      <div class="flex md:ml-10 lg:ml-28 xl:ml-48 flex-row gap-6">
+        <a href="https://www.facebook.com/EdsonNunezOficial" target="_blank">
+          <FacebookIcon />
+        </a>
+        <a href="https://www.instagram.com/edsonnunezoficial/" target="_blank">
+          <InstagramIcon />
+        </a>
+        <a href="https://twitter.com/EdsonNunezOficial" target="_blank">
+          <TwitterIcon />
+        </a>
+        <a href="https://www.tiktok.com/@edsonnunezoficial" target="_blank">
+          <TiktokIcon />
+        </a>
+      </div>
+
+      <a href="#header-nav" class="md:hidden absolute top-6 right-6">
+        <CloseIcon />
+      </a>
+    </nav>
+    <a href="#header-menu" class="md:hidden"><MenuIcon /></a>
+  </div>
+</header>
