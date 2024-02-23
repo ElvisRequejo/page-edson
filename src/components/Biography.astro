@@ -1,0 +1,19 @@
+---
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section
+  id="bio"
+  class="relative h-[100vh] py-24 z-10 mx-auto flex justify-center mb-10 text-pretty px-6 text-left text-xl"
+>
+  <div>
+    <h1
+      class="mx-auto mb-10 text-wrap text-center text-2xl lg:text-3xl xl:text-3xl font-semibold tracking-wide"
+    >
+      {i18n.BIO_TITLE}
+    </h1>
+  </div>
+</section>

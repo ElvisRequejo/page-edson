@@ -1,6 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import LastRelease from "../LastRelease.astro";
+import BannerMain from "../BannerMain.astro";
+import Music from "../Music.astro";
+import Videos from "../Videos.astro";
+import Biography from "../Biography.astro";
 
 import { getI18N } from "../../i18n/";
 
@@ -22,6 +26,10 @@ const i18n = getI18N({ currentLocale });
   />
 
   <main>
-    <LastRelease />
+    <BannerMain />
+    <!-- <LastRelease /> -->
+    <Music />
+    <Videos />
+    <Biography />
   </main>
 </Layout>

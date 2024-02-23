@@ -1,18 +1,12 @@
 ---
-import Logo from "./Logo.astro";
-
 import { getI18N } from "../i18n/index";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <section
-  id="music"
+  id=""
   class="relative bg-black h-auto z-10 mx-auto flex justify-center mb-10 py-24 text-pretty px-6 text-left text-xl"
 >
   <div class="xl:max-w-[1000px] md:max-w-[800px] w-full">
@@ -30,4 +24,7 @@ const t = useTranslations(lang);
         allowfullscreen></iframe>
     </div>
   </div>
+  <!-- <div>
+    <img src="/Edson.png" alt="2021" class="w-64 h-auto" />
+  </div> -->
 </section>
