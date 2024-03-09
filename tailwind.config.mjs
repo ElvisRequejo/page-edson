@@ -6,11 +6,15 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				tomaso: ["Tomaso", "sans-serif"],
-				jura: ["Jura", "sans-serif"],
 			  },
 			  screens: {
 				'xs': '470px',
+			  },
+			  colors: {
+				'primary': '#000000', //Ahumado
+				'primary-contrast': '#222223', //Negro Neutro
+				'secondary': '#fff',
+				'neutral': '#1A1A1A',
 			  }
 		},
 	},

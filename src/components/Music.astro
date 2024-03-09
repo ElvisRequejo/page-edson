@@ -1,6 +1,8 @@
 ---
 import { getI18N } from "../i18n/index";
 import ListMusic from "./ListMusic.astro";
+import Typography from "./Typography.astro";
+import Container from "./Container.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -10,15 +12,11 @@ const i18n = getI18N({ currentLocale });
   id="music"
   class="relative h-auto py-24 z-10 mx-auto flex justify-center mb-10 text-pretty px-6 text-left text-xl"
 >
-  <div>
-    <h1
-      class="mx-auto mb-10 text-wrap text-center text-2xl lg:text-3xl xl:text-3xl font-semibold tracking-wide"
-    >
+  <Container>
+    <Typography variant="bigger" color="neutral" as="h1" class="">
       {i18n.MUSIC_TITLE}
-    </h1>
-    <div class="px-5 xs:px-3 lg:px-5 xl:px-10 max-w-[1580px]">
-      <ListMusic />
-    </div>
+    </Typography>
+    <ListMusic />
     <div
       class="px-5 mt-16 xs:px-3 lg:px-5 xl:px-10 flex items-center justify-center"
     >
@@ -33,5 +31,5 @@ const i18n = getI18N({ currentLocale });
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"></iframe>
     </div>
-  </div>
+  </Container>
 </section>

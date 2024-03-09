@@ -4,6 +4,17 @@ import { getI18N } from "../i18n/index";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+
+const itemsPerPage = 4; // Número de elementos por página
+let currentPage = 1;
+
+function nextPage() {
+  currentPage++;
+}
+
+function previousPage() {
+  currentPage--;
+}
 ---
 
 <section>
@@ -12,17 +23,35 @@ const i18n = getI18N({ currentLocale });
       class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 mt-4"
     >
       {
-        music.map(({ urlImage, urlSong }) => {
-          return (
-            <div>
-              <a href={urlSong} target="_blank" rel="noreferrer">
-                <img src={urlImage} alt="jpg" class="w-full rounded-lg" />
-                <div class="w-full text-center">{i18n.MUSIC_ITEM}</div>
-              </a>
-            </div>
-          );
-        })
+        music
+          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+          .map(({ urlImage, urlSong }) => {
+            return (
+              <div>
+                <a href={urlSong} target="_blank" rel="noreferrer">
+                  <img src={urlImage} alt="jpg" class="w-full rounded-lg" />
+                  <div class="w-full text-center">{i18n.MUSIC_ITEM}</div>
+                </a>
+              </div>
+            );
+          })
       }
+    </div>
+    <div class="flex justify-center mt-4">
+      <button
+        onClick={previousPage}
+        disabled={currentPage === 1}
+        class="px-4 py-2 mr-2 bg-gray-200 disabled:opacity-50"
+      >
+        Previous
+      </button>
+      <button
+        onlick={nextPage}
+        disabled={currentPage * itemsPerPage >= music.length}
+        class="px-4 py-2 bg-gray-200 disabled:opacity-50"
+      >
+        Next
+      </button>
     </div>
   </section>
 </section>

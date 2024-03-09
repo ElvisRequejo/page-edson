@@ -1,22 +1,21 @@
 ---
 import { getI18N } from "../i18n/index";
-// import ListVideos from "./ListVideos";
+import Container from "./Container.astro";
 
 import ListVideos from "./ListVideos.astro";
+import Typography from "./Typography.astro";
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
 <section
   id="video"
-  class="relative h-auto bg-black py-24 z-10 mx-auto flex justify-center mb-10 text-pretty px-6 text-left text-xl"
+  class="relative h-auto bg-primary py-24 z-10 mx-auto flex justify-center mb-10 text-pretty px-6 text-left text-xl"
 >
-  <div class="w-full">
-    <h1
-      class="mx-auto mb-10 text-wrap text-center text-2xl lg:text-3xl xl:text-3xl font-semibold tracking-wide"
-    >
+  <Container>
+    <Typography variant="bigger" color="neutral" as="h1" class="">
       {i18n.VIDEO_TITLE}
-    </h1>
+    </Typography>
     <ListVideos />
-  </div>
+  </Container>
 </section>
