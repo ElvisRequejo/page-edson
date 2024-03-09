@@ -1,7 +1,8 @@
 ---
 import { getI18N } from "../i18n/index";
-import ListVideos from "./ListVideos";
+// import ListVideos from "./ListVideos";
 
+import ListVideos from "./ListVideos.astro";
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
@@ -16,6 +17,6 @@ const i18n = getI18N({ currentLocale });
     >
       {i18n.VIDEO_TITLE}
     </h1>
-    <ListVideos i18n={i18n} />
+    <ListVideos />
   </div>
 </section>

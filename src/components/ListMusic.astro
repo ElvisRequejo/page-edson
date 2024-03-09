@@ -1,0 +1,28 @@
+---
+import music from "../data/music.json";
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section>
+  <section>
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 mt-4"
+    >
+      {
+        music.map(({ urlImage, urlSong }) => {
+          return (
+            <div>
+              <a href={urlSong} target="_blank" rel="noreferrer">
+                <img src={urlImage} alt="jpg" class="w-full rounded-lg" />
+                <div class="w-full text-center">{i18n.MUSIC_ITEM}</div>
+              </a>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+</section>
