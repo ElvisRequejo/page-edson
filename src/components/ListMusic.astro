@@ -1,57 +1,65 @@
 ---
 import music from "../data/music.json";
 import { getI18N } from "../i18n/index";
+import { previousPage, nextPage } from "../lib/pagination.js";
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
-
-const itemsPerPage = 4; // Número de elementos por página
-let currentPage = 1;
-
-function nextPage() {
-  currentPage++;
-}
-
-function previousPage() {
-  currentPage--;
-}
+export const { currentLocale } = Astro;
+export const i18n = getI18N({ currentLocale });
+export const itemsPerPage = 4; // Número de elementos por página
+export let currentPage = 1;
 ---
 
-<section>
-  <section>
-    <div
-      class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 mt-4"
+<script>
+  function handlePreviousClick() {
+    // previousPage();
+  }
+
+  function handleNextClick() {
+    // nextPage();
+  }
+
+  document
+    .querySelector('button[data-action="previous"]')
+    ?.addEventListener("click", handlePreviousClick);
+
+  document
+    .querySelector('button[data-action="next"]')
+    ?.addEventListener("click", handleNextClick);
+</script>
+
+<section class="pt-10">
+  <div
+    class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-6 xs:mt-4"
+  >
+    {
+      music
+        .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+        .map(({ urlImage, urlSong }) => {
+          return (
+            <div>
+              <a href={urlSong} target="_blank" rel="noreferrer">
+                <img src={urlImage} alt="jpg" class="w-full rounded-lg" />
+                <div class="w-full text-center">{i18n.MUSIC_ITEM}</div>
+              </a>
+            </div>
+          );
+        })
+    }
+  </div>
+  <div class="flex justify-center mt-4">
+    <button
+      data-action="previous"
+      class="px-4 py-2 mr-2 bg-gray-200 disabled:opacity-50"
+      disabled={currentPage === 1}
     >
-      {
-        music
-          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-          .map(({ urlImage, urlSong }) => {
-            return (
-              <div>
-                <a href={urlSong} target="_blank" rel="noreferrer">
-                  <img src={urlImage} alt="jpg" class="w-full rounded-lg" />
-                  <div class="w-full text-center">{i18n.MUSIC_ITEM}</div>
-                </a>
-              </div>
-            );
-          })
-      }
-    </div>
-    <div class="flex justify-center mt-4">
-      <button
-        onClick={previousPage}
-        disabled={currentPage === 1}
-        class="px-4 py-2 mr-2 bg-gray-200 disabled:opacity-50"
-      >
-        Previous
-      </button>
-      <button
-        onlick={nextPage}
-        disabled={currentPage * itemsPerPage >= music.length}
-        class="px-4 py-2 bg-gray-200 disabled:opacity-50"
-      >
-        Next
-      </button>
-    </div>
-  </section>
+      Previous
+    </button>
+    <button
+      data-action="next"
+      class="px-4 py-2 bg-gray-200 disabled:opacity-50"
+      disabled={currentPage * itemsPerPage >= music.length}
+    >
+      Next
+    </button>
+  </div>
 </section>
