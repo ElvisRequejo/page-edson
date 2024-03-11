@@ -10,10 +10,15 @@ const i18n = getI18N({ currentLocale });
 
 <section
   id="music"
-  class="h-auto pb-24 pt-20 sm:pt-32 lg:pt-40 z-10 flex justify-center mb-10 text-pretty text-left text-xl"
+  class="h-auto pb-24 pt-10 flex justify-center mb-10 text-pretty text-left"
 >
   <Container>
-    <Typography variant="bigger" color="neutral" as="h1" class="">
+    <Typography
+      variant="bigger"
+      color="neutral"
+      as="h1"
+      class="-mb-8 xs:-mb-14 lg:-mb-24"
+    >
       {i18n.MUSIC_TITLE}
     </Typography>
     <ListMusic />

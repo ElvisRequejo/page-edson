@@ -2,6 +2,7 @@
 import { getI18N } from "../i18n/index";
 import Typography from "./Typography.astro";
 import Container from "./Container.astro";
+import BiographyItems from "./BiographyItems.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -9,11 +10,12 @@ const i18n = getI18N({ currentLocale });
 
 <section
   id="bio"
-  class="relative h-[100vh] py-24 z-10 mx-auto flex justify-center mb-10 text-pretty px-6 text-left text-xl"
+  class="h-auto pb-24 pt-10 z-10 flex justify-center mb-10 text-pretty text-left"
 >
   <Container>
     <Typography variant="bigger" color="neutral" as="h1" class="">
       {i18n.BIO_TITLE}
     </Typography>
+    <BiographyItems />
   </Container>
 </section>

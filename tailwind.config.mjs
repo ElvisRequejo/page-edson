@@ -15,7 +15,7 @@ export default {
 				'primary-contrast': '#222223', //Negro Neutro
 				'secondary': '#fff',
 				'neutral': '#1A1A1A',
-			  }
+			  },
 		},
 	},
 	plugins: [

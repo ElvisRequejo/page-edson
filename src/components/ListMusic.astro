@@ -26,7 +26,6 @@ export let currentPage = 1;
     .querySelector('button[data-action="next"]')
     ?.addEventListener("click", handleNextClick);
 </script>
-
 <section class="pt-10">
   <div
     class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-6 xs:mt-4"
@@ -36,10 +35,17 @@ export let currentPage = 1;
         .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
         .map(({ urlImage, urlSong }) => {
           return (
-            <div>
+            <div style="position: relative;">
               <a href={urlSong} target="_blank" rel="noreferrer">
-                <img src={urlImage} alt="jpg" class="w-full rounded-lg" />
-                <div class="w-full text-center">{i18n.MUSIC_ITEM}</div>
+                <img
+                  class="opacity-90 rounded-xl hover:opacity-100 duration-300 hover:scale-105"
+                  src={urlImage}
+                  alt="jpg"
+                  class="w-full"
+                />
+                <div class="item bg-primary-contrast uppercase px-3 py-2">
+                  {i18n.MUSIC_ITEM}
+                </div>
               </a>
             </div>
           );
@@ -63,3 +69,19 @@ export let currentPage = 1;
     </button>
   </div>
 </section>
+
+<style>
+  .item {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  a:hover .item {
+    display: block;
+    visibility: visible;
+  }
+</style>

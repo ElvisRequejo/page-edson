@@ -7,9 +7,25 @@ const i18n = getI18N({ currentLocale });
 
 <section
   id="home"
-  class="relative bg-black h-[100vh] z-10 mx-auto flex justify-center text-pretty px-6 text-left text-xl"
+  class="bg-black h-[100vh] w-full z-10 flex justify-center text-pretty text-left text-xl"
 >
-  <div class="h-auto mt-28 flex items-end">
-    <img src="/EdsonBanner.png" alt="2021" class="w-auto pt-48 h-[100vh]" />
+  <div
+    class="flex flex-col lg:flex-row w-full justify-between md:justify-center items-center"
+  >
+    <div
+      class="text-[100px] lg:text-[150px] yesteryear justify-center xs:flex-row md:pt-20 lg:pt-0 items-center gap-14 xs:gap-4 h-full flex flex-col lg:flex-col"
+    >
+      <span class="lg:pb-14">Edson</span>
+      <span>Nuñez</span>
+    </div>
+    <div class="h-full lg:flex lg:justify-end lg:items-end">
+      <div class="h-full xs:pb-0 lg:flex lg:justify-end lg:items-end">
+        <img
+          src="/EdsonBanner.png"
+          alt="2021"
+          class="sm:w-[500px] xs:w-auto md:w-[600px] lg:w-auto h-auto lg:h-[80%]"
+        />
+      </div>
+    </div>
   </div>
 </section>

@@ -1,0 +1,81 @@
+---
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section
+  class="w-full gap-8 text-pretty text-left text-sm xs:text-base lg:text-xl flex flex-col md:flex-row items-center justify-between"
+>
+  <div id="trophies" class="mt-6 md:mt-0 md:w-1/2">
+    <img class="w-full h-full rounded-md" src="/EdsonBanner.png" />
+  </div>
+  <div id="trophies-text" class="md:w-1/2 space-y-4">
+    <h1
+      class="mx-auto mb-10 text-balance text-left text-3xl lg:text-5xl font-semibold tracking-wide"
+    >
+      {i18n.ABOUT_ME_TITLE}
+    </h1>
+    <p set:html={i18n.ABOUT_ME_DESCRIPTION_1} />
+    <p set:html={i18n.ABOUT_ME_DESCRIPTION_2} />
+    <p set:html={i18n.ABOUT_ME_DESCRIPTION_3} />
+    <p set:html={i18n.ABOUT_ME_DESCRIPTION_4} />
+    <p set:html={i18n.ABOUT_ME_DESCRIPTION_5} />
+    <p set:html={i18n.ABOUT_ME_DESCRIPTION_6} />
+    <p set:html={i18n.ABOUT_ME_DESCRIPTION_7} />
+  </div>
+</section>
+
+<style>
+  #theater,
+  #trophies-text h1,
+  #trophies-text p {
+    animation: cover-animation linear both;
+    animation-timeline: view();
+  }
+  #theater-text h1,
+  #theater-text p,
+  #trophies {
+    animation: entry-animation linear both;
+    animation-timeline: view();
+  }
+  #theater {
+    animation-range: entry 10% cover 40%;
+  }
+  #theater-text h1 {
+    animation-range: entry 10% cover 30%;
+  }
+  #theater-text p {
+    animation-range: entry 10% cover 20%;
+  }
+  #trophies {
+    animation-range: entry 30% cover 50%;
+  }
+  #trophies-text h1 {
+    animation-range: entry 30% cover 40%;
+  }
+  #trophies-text p {
+    animation-range: entry 20% cover 30%;
+  }
+  @keyframes entry-animation {
+    0% {
+      opacity: 0;
+      translate: var(--entry-animation) 0;
+    }
+    100% {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+  @keyframes cover-animation {
+    0% {
+      opacity: 0;
+      translate: var(--cover-animation) 0;
+    }
+    100% {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+</style>
