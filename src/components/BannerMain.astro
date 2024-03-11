@@ -7,13 +7,22 @@ const i18n = getI18N({ currentLocale });
 
 <section
   id="home"
-  class="bg-black h-[100vh] w-full z-10 flex justify-center text-pretty text-left text-xl"
+  class="h-[100vh] bg-black w-full z-10 flex justify-center items-end text-pretty text-left text-xl"
 >
   <div
-    class="flex flex-col lg:flex-row w-full justify-between md:justify-center items-center"
+    class="absolute1 max-w-[280px] xs:max-w-[370px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[900px] xl:max-w-[1100px] 2xl:max-w-full w-full h-full"
+  >
+    <div class="absolute1 inset-0 justify-center1 gap-24">
+      <div class="bg-shape1 bg-teal1 opacity-501 bg-blur1"></div>
+      <div class="bg-shape2 bg-primary1 opacity-501 bg-blur1"></div>
+      <div class="bg-shape3 bg-purple1 opacity-501 bg-blur1"></div>
+    </div>
+  </div>
+  <div
+    class="flex flex-col lg:px-28 xl:max-w-[1300px] lg:flex-row w-full justify-between md:justify-center items-center"
   >
     <div
-      class="text-[100px] lg:text-[150px] yesteryear justify-center xs:flex-row md:pt-20 lg:pt-0 items-center gap-14 xs:gap-4 h-full flex flex-col lg:flex-col"
+      class="text-[100px] pb-40 md:pb-20 lg:text-[150px] yesteryear justify-center xs:flex-row md:pt-20 lg:pt-0 items-center gap-14 xs:gap-4 h-full flex flex-col lg:flex-col"
     >
       <span class="lg:pb-14">Edson</span>
       <span>Nuñez</span>
@@ -23,9 +32,159 @@ const i18n = getI18N({ currentLocale });
         <img
           src="/EdsonBanner.png"
           alt="2021"
-          class="sm:w-[500px] xs:w-auto md:w-[600px] lg:w-auto h-auto lg:h-[80%]"
+          class="sm:w-[500px] z-20 xs:w-auto md:w-[600px] lg:w-auto h-auto lg:h-[80%]"
         />
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  html {
+    font-family: "Onest Variable", system-ui, sans-serif;
+    background: #0a0a0a;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .absolute1 {
+    position: absolute;
+    top: 50px !important;
+    inset: 0;
+    justify-content: center;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  .justify-center1 {
+    justify-content: center;
+  }
+
+  .bg-shape1 {
+    width: 400px;
+    height: 400px;
+    border-radius: 9999px;
+    position: relative;
+    animation: one 10s infinite;
+  }
+
+  .bg-shape2 {
+    width: 300px;
+    height: 300px;
+    border-radius: 9999px;
+    position: relative;
+    animation: two 10s infinite;
+  }
+
+  .bg-shape3 {
+    width: 300px;
+    height: 300px;
+    border-radius: 9999px;
+    position: relative;
+    animation: three 10s infinite;
+  }
+
+  @media screen and (max-width: 470px) {
+    .bg-shape1 {
+      width: 200px;
+      height: 200px;
+    }
+    .bg-shape2 {
+      width: 150px;
+      height: 150px;
+    }
+    .bg-shape3 {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  @keyframes one {
+    0% {
+      left: 0px;
+      top: 0px;
+    }
+    25% {
+      left: 100px;
+      top: 70px;
+    }
+    50% {
+      left: 20px;
+      top: 150px;
+    }
+    75% {
+      left: 50px;
+      top: 100px;
+    }
+    100% {
+      left: 0px;
+      top: 0px;
+    }
+  }
+
+  @keyframes two {
+    0% {
+      left: 0px;
+      top: 400px;
+    }
+    25% {
+      left: 150px;
+      top: 200px;
+    }
+    50% {
+      left: 0px;
+      top: 100px;
+    }
+    75% {
+      left: 50px;
+      top: 100px;
+    }
+    100% {
+      left: 0px;
+      top: 400px;
+    }
+  }
+
+  @keyframes three {
+    0% {
+      left: 0px;
+      top: 0px;
+    }
+    25% {
+      left: 50px;
+      top: 10px;
+    }
+    50% {
+      left: 100px;
+      top: 50px;
+    }
+    75% {
+      left: 50px;
+      top: 100px;
+    }
+    100% {
+      left: 0px;
+      top: 0px;
+    }
+  }
+
+  .opacity-501 {
+    opacity: 0.5;
+  }
+
+  .bg-blur1 {
+    filter: blur(90px);
+  }
+
+  .bg-primary1 {
+    background-color: rgb(26, 10, 146);
+  }
+
+  .bg-teal1 {
+    background-color: rgb(255, 72, 173);
+  }
+
+  .bg-purple1 {
+    background-color: rgb(13, 129, 104);
+  }
+</style>
