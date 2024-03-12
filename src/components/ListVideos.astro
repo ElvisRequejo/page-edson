@@ -1,6 +1,10 @@
 ---
 import { getI18N } from "../i18n/index";
 import videos from "../data/videos.json";
+import YoutubeIcon from "./icons/Youtube.astro";
+
+const count = videos.length;
+console.log(count);
 ---
 
 <script>
@@ -47,25 +51,47 @@ import videos from "../data/videos.json";
     </div>
   </div>
   <div class="flex justify-center">
-    <div
-      class="overflow-x-auto w-full flex justify-center whitespace-nowrap mt-10"
-    >
-      <div class="inline-block min-w-screen">
-        <div class="flex gap-4">
-          {
-            videos.map((video) => {
-              return (
+    <div class="overflow-x-auto w-full mt-10">
+      <div class="flex gap-4 custom-width" style={`--count: ${videos.length}`}>
+        {
+          videos.map((video) => {
+            return (
+              <div class="relative opacity-60 hover:opacity-100 cursor-pointer">
                 <img
                   data-video-url={video.urlVideo}
                   src={video.urlMiniature}
-                  alt="Image 1"
-                  class="sm:w-1/3 w-1/2 lg:w-1/4 xl:w-1/5 video-thumbnail opacity-80 hover:opacity-100 hover:cursor-pointer rounded-xl mb-4"
+                  alt="Miniatura de video"
+                  class="video-thumbnail rounded-xl mb-4"
                 />
-              );
-            })
-          }
-        </div>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .custom-width {
+    width: calc(25% * var(--count));
+  }
+
+  @media (max-width: 639px) {
+    .custom-width {
+      width: calc(50% * var(--count));
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 767px) {
+    .custom-width {
+      width: calc(33.33% * var(--count));
+    }
+  }
+
+  @media (min-width: 768px) {
+    .custom-width {
+      width: calc(25% * var(--count));
+    }
+  }
+</style>

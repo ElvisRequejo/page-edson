@@ -9,6 +9,7 @@ import FacebookIcon from "./icons/Facebook.astro";
 import SpotifyIcon from "./icons/Spotify.astro";
 import TiktokIcon from "./icons/Tiktok.astro";
 import InstagramIcon from "./icons/Instagram.astro";
+import YoutubeIcon from "./icons/Youtube.astro";
 
 import { getI18N } from "../i18n/index";
 import {
@@ -118,6 +119,9 @@ const translatePath = useTranslatedPath(lang);
         >
           <SpotifyIcon />
         </a>
+        <a href="https://www.youtube.com/@EdsonNunezOficial" target="_blank">
+          <YoutubeIcon />
+        </a>
         <a href="https://www.facebook.com/EdsonNunezOficial" target="_blank">
           <FacebookIcon />
         </a>
@@ -125,7 +129,11 @@ const translatePath = useTranslatedPath(lang);
           <InstagramIcon />
         </a>
 
-        <a href="https://www.tiktok.com/@edsonnunezoficial" target="_blank">
+        <a
+          class="hidden lg:block"
+          href="https://www.tiktok.com/@edsonnunezoficial"
+          target="_blank"
+        >
           <TiktokIcon />
         </a>
       </div>

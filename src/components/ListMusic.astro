@@ -5,11 +5,11 @@ import { previousPage, nextPage } from "../lib/pagination.js";
 
 export const { currentLocale } = Astro;
 export const i18n = getI18N({ currentLocale });
-export const itemsPerPage = 4; // Número de elementos por página
-export let currentPage = 1;
+// export const itemsPerPage = 4; // Número de elementos por página
+// export let currentPage = 1;
 ---
 
-<script>
+<!-- <script>
   function handlePreviousClick() {
     // previousPage();
   }
@@ -25,48 +25,37 @@ export let currentPage = 1;
   document
     .querySelector('button[data-action="next"]')
     ?.addEventListener("click", handleNextClick);
-</script>
+</script> -->
 <section class="pt-10">
   <div
-    class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-6 xs:mt-4"
+    class="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 xl:gap-8 xs:mt-4"
   >
     {
-      music
-        .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-        .map(({ urlImage, urlSong }) => {
-          return (
-            <div style="position: relative;">
-              <a href={urlSong} target="_blank" rel="noreferrer">
+      music.map(({ urlImage, urlSong, titleSong }) => {
+        return (
+          <div style="position: relative;">
+            <a
+              href={urlSong}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-md transition duration-300 "
+            >
+              <div>
                 <img
-                  class="opacity-90 rounded-xl hover:opacity-100 duration-300 hover:scale-105"
+                  class="hover:scale-105 transition duration-300"
                   src={urlImage}
                   alt="jpg"
-                  class="w-full"
                 />
-                <div class="item bg-primary-contrast uppercase px-3 py-2">
+                <div class="item bg-white hover:scale-105 duration-300 hover:bg-primary-contrast hover:text-white text-primary-contrast font-semibold uppercase px-3 py-2">
                   {i18n.MUSIC_ITEM}
                 </div>
-              </a>
-            </div>
-          );
-        })
+              </div>
+              <div class="text-center pt-2">{titleSong}</div>
+            </a>
+          </div>
+        );
+      })
     }
-  </div>
-  <div class="flex justify-center mt-4">
-    <button
-      data-action="previous"
-      class="px-4 py-2 mr-2 bg-gray-200 disabled:opacity-50"
-      disabled={currentPage === 1}
-    >
-      Previous
-    </button>
-    <button
-      data-action="next"
-      class="px-4 py-2 bg-gray-200 disabled:opacity-50"
-      disabled={currentPage * itemsPerPage >= music.length}
-    >
-      Next
-    </button>
   </div>
 </section>
 

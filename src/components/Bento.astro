@@ -1,0 +1,135 @@
+---
+import BentoItem from "./BentoItem.astro";
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section>
+  <!-- <div
+    class={`
+    w-full max-w-[1400px] gap-4
+    mx-auto px-6 pb-6 md:px-12 lg:pb-0 lg:px-20
+  `}
+  >
+    <h1
+      class="mx-auto mt-20 -mb-10 text-balance text-left text-3xl lg:text-5xl font-semibold tracking-wide"
+    >
+      {i18n.BENTO_TITLE}
+    </h1>
+  </div> -->
+  <div
+    class={`
+    w-full max-w-[1400px]
+    grid lg:grid-cols-10 auto-rows-[30rem] gap-4
+    mx-auto px-6 md:px-12 lg:px-20
+    pt-6 md:pt-12 lg:pt-20
+  `}
+  >
+    <BentoItem class="col-span-10 lg:col-span-4" title={i18n.BENTO_TITLE_1}>
+      <div
+        slot="image"
+        class="background transition-scale absolute bottom-0 left-0 top-0
+        -z-10 h-full w-full bg-blue-950
+        bg-cover bg-center bg-no-repeat opacity-90 duration-1000 ease-in-out group-hover:scale-110"
+        data-src="https://i.scdn.co/image/ab6761610000e5ebf1fa792c806bde3588278a14"
+      >
+      </div>
+
+      <p
+        slot="content"
+        class="max-w-xl text-base md:text-lg"
+        set:html={i18n.BENTO_CONTENT_1}
+      />
+    </BentoItem>
+    <BentoItem
+      class="col-span-10 lg:col-span-6"
+      title={i18n.BENTO_TITLE_2}
+      subtitle={i18n.BENTO_SUBTITLE_2}
+    >
+      <div
+        slot="image"
+        class="background transition-scale absolute bottom-0 left-0 top-0
+    -z-10 h-full w-full bg-blue-800
+    bg-cover bg-center bg-no-repeat opacity-90 duration-1000 ease-in-out group-hover:scale-110"
+        data-src="https://www.rockachorao.com/wp-content/uploads/2022/06/WhatsApp-Image-2022-06-13-at-5.10.54-PM-1024x576.jpeg"
+      >
+      </div>
+      <p
+        slot="content"
+        class="max-w-xl text-base md:text-lg"
+        set:html={i18n.BENTO_CONTENT_2}
+      />
+    </BentoItem>
+    <BentoItem
+      class="col-span-10 lg:col-span-6"
+      title={i18n.BENTO_TITLE_3}
+      subtitle={i18n.BENTO_SUBTITLE_3}
+    >
+      <div
+        slot="image"
+        class="background transition-scale absolute bottom-0 left-0 top-0
+        -z-10 h-full w-full bg-blue-900
+        bg-cover bg-center bg-no-repeat opacity-90 duration-1000 ease-in-out group-hover:scale-110"
+        data-src="https://i.ytimg.com/vi/LfTaW7mRiV8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAC6YNwcQdhDCwgNZwI5oA279GLPg"
+      >
+      </div>
+      <p
+        slot="content"
+        class="max-w-xl text-base md:text-lg"
+        set:html={i18n.BENTO_CONTENT_3}
+      />
+    </BentoItem>
+    <BentoItem class="col-span-10 lg:col-span-4" title={i18n.BENTO_TITLE_4}>
+      <div
+        slot="image"
+        class="background transition-scale absolute bottom-0 left-0 top-0
+        -z-10 h-full w-full bg-blue-950
+        bg-cover bg-center bg-no-repeat opacity-90 duration-1000 ease-in-out group-hover:scale-110"
+        data-src="https://akamai.sscdn.co/uploadfile/letras/fotos/6/5/6/4/65642240b72d39d68fdd8e0dc33da0d7.jpg"
+      >
+      </div>
+      <p
+        slot="content"
+        class="max-w-xl text-base md:text-lg"
+        set:html={i18n.BENTO_CONTENT_4}
+      />
+    </BentoItem>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const backgrounds = document.querySelectorAll(
+      ".background"
+    ) as NodeListOf<HTMLElement>;
+
+    if (window.IntersectionObserver == null) {
+      backgrounds.forEach((bkg) => {
+        bkg.style.backgroundImage = "url('" + bkg.dataset.src + "')";
+      });
+      return;
+    }
+
+    function handleIntersection(entries: IntersectionObserverEntry[]) {
+      entries.map((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const { style, dataset } = target;
+          // Item has crossed our observation
+          // threshold - load src from data-src
+          style.backgroundImage = "url('" + dataset.src + "')";
+          // Job done for this item - no need to watch it!
+          observer.unobserve(entry.target);
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      rootMargin: "100px",
+    });
+
+    backgrounds.forEach((bkg) => observer.observe(bkg));
+  });
+</script>
